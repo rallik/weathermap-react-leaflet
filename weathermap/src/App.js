@@ -1,10 +1,12 @@
 import React from 'react'
+import Display from './components/Display'
+import './App.scss'
 
 const App = () => {
   return (
-    <div>
-      hello world
-    </div>
+    <React.Fragment>
+      <Display />
+    </React.Fragment>
   )
 }
 
