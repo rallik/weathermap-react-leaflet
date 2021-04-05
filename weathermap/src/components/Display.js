@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import L from 'leaflet';
-import { MapContainer, TileLayer, WMSTileLayer, Marker, Popup, useMap, LayersControl } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap, LayersControl } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 const Display = () => {
@@ -14,21 +14,6 @@ const Display = () => {
         scrollZoom: false
     });
 
-    /*
-    let nexrad = {
-        url: "http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi",
-        params: {
-            layers: 'nexrad-n0r-900913',
-            format: 'image/png',
-            transparent: true,
-            attribution: "Weather data © 2012 IEM Nexrad"
-        },
-        opacity: 0.5,
-    };
-
-    <WMSTileLayer url={nexrad.url} params={nexrad.params} opacity={nexrad.opacity}/>
-
-    */
         
     const { zoom, lat, long, scrollZoom } = state;
     const position = [lat, long];
@@ -55,11 +40,15 @@ const Display = () => {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 </LayersControl.BaseLayer> 
-                
-                {/* <TileLayer
+                <LayersControl.Overlay
+                    name=""
+                >
+                <TileLayer
                     attribution='Data from <a href="https://openweathermap.org/">OpenWeather</a>'
                     url={owm_url}
-                /> */}
+                />
+                </LayersControl.Overlay>
+                
                 {/* <Marker position={position}>
                     <Popup>
                     Popup
